@@ -1,0 +1,25 @@
+<div class="weather-container">
+  <h1>Enter City Name ...</h1>
+
+  <div class="search-box">
+    <input 
+      type="text"
+      [(ngModel)]="city"
+      (keyup.enter)="getWeather()"
+      placeholder="Enter city"
+    />
+    <button (click)="getWeather()">Get Weather</button>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner"></div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="weatherData" class="weather-card">
+    <h2>{{ weatherData.city }}</h2>
+    <p>Temperature: {{ weatherData.temperature }}°C</p>
+    <p>Description: {{ weatherData.description }}</p>
+  </div>
+</div>

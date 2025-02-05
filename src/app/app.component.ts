@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'weather-app';
+  backgroundImage: string = 'assets/default.jpg';
+
+  changeBackground(imageUrl: string): void {
+    this.backgroundImage = imageUrl;
+  }
 }
