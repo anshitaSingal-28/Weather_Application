@@ -93,3 +93,36 @@ h1 {
   font-size: 18px;
   color: #333;
 }
+
+.weather-container {
+  text-align: center;
+}
+
+.city-table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.city-table th, .city-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.city-table th {
+  background: #007BFF;
+  color: white;
+}
+
+.city-table button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.city-table button:hover {
+  background: darkred;
+}

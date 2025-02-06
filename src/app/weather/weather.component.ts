@@ -14,6 +14,7 @@ export class WeatherComponent {
   weatherData: any = null;
   errorMessage: string = '';
   loading: boolean = false;
+  searchedCities: any[] = [];
 
   private API_KEY = '9cf80b5e5b3ee838cf37b850b9957cb2';
 
@@ -40,6 +41,7 @@ export class WeatherComponent {
           temperature: data.main.temp,
           description: data.weather[0].description
         };
+        this.searchedCities.push(this.weatherData);
         this.loading = false;
         this.updateBackground(this.weatherData.description);
       });
@@ -59,9 +61,13 @@ export class WeatherComponent {
     } else if (description.includes('haze')) {
       backgroundUrl = 'assets/haze.jpg';
     } else if (description.includes('smoke')) {
-      backgroundUrl = 'assets/smoke.jpg';
+      backgroundUrl = 'assets/smoke.jpeg';
     }
 
     this.backgroundChange.emit(backgroundUrl);
+  }
+
+  deleteCity(index: number): void {
+    this.searchedCities.splice(index, 1);
   }
 }
