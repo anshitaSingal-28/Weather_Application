@@ -1,24 +1,24 @@
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
+  /* Replace with your image URL */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed; /* Optional for a parallax effect */
+  
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  object-fit: cover;
- position: static;
-}
-h1 {
-  margin-top: -100px;
 }
 
-body{
- 
-    overflow: hidden;
-    height: 100%;
-  
-}
 

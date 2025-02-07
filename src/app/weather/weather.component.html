@@ -1,8 +1,10 @@
 <div class="weather-container">
+  <h1 class="text-center">Weather Application: Display Real-time Weather Information</h1>
+
   <h1>Enter City Name ...</h1>
 
   <div class="search-box">
-    <input 
+    <input
       type="text"
       [(ngModel)]="city"
       (keyup.enter)="getWeather()"
@@ -10,6 +12,8 @@
     />
     <button (click)="getWeather()">Get Weather</button>
   </div>
+
+  <div id="weatherResult"></div>
 
   <div *ngIf="loading" class="loading-spinner"></div>
 
@@ -43,4 +47,25 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Newly added CSV Download button -->
+  <button (click)="exportAsCSV()" class="csv-download-btn">Download CSV</button>
 </div>
+
+<style>
+  .csv-download-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+  }
+
+  .csv-download-btn:hover {
+    background-color: #45a049;
+  }
+</style>

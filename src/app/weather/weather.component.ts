@@ -15,6 +15,7 @@ export class WeatherComponent {
   errorMessage: string = '';
   loading: boolean = false;
   searchedCities: any[] = [];
+  backgroundImage: string = 'assets/default.jpg';
 
   private API_KEY = '9cf80b5e5b3ee838cf37b850b9957cb2';
 
@@ -47,6 +48,10 @@ export class WeatherComponent {
       });
   }
 
+  changeBackground(imageUrl: string): void {
+    this.backgroundImage = imageUrl;
+  }
+
   updateBackground(description: string): void {
     let backgroundUrl = 'assets/default.jpg';
 
@@ -69,5 +74,32 @@ export class WeatherComponent {
 
   deleteCity(index: number): void {
     this.searchedCities.splice(index, 1);
+  }
+
+  exportAsCSV(): void {
+    if (this.searchedCities.length === 0) {
+      alert("No data available to export.");
+      return;
+    }
+    
+    const csvHeader = "City, Temperature (°C), Description\n";
+    
+    const csvRows = this.searchedCities.map(city => 
+      `"${city.city}", "${city.temperature}", "${city.description}"`
+    ).join("\n");
+    
+    const csvContent = csvHeader + csvRows;
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    
+    const url = window.URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'weather_data.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    
   }
 }
